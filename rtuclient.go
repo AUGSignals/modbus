@@ -8,6 +8,7 @@ import (
 	"encoding/binary"
 	"fmt"
 	"io"
+	"os/exec"
 	"time"
 )
 
@@ -111,6 +112,14 @@ type rtuSerialTransporter struct {
 }
 
 func (mb *rtuSerialTransporter) Send(aduRequest []byte) (aduResponse []byte, err error) {
+	/*********************************************************/
+	//This part is a special adaption for AirSENCE V4.0 board
+	exec.Command("gpioctl", "dirout-high", "42").Run()
+	go func() {
+		time.Sleep(5000 * time.Microsecond)
+		exec.Command("gpioctl", "dirout-low", "42").Run()
+	}()
+	/********************************************************/
 	// Make sure port is connected
 	if err = mb.serialPort.connect(); err != nil {
 		return

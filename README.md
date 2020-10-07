@@ -1,6 +1,9 @@
 go modbus [![Build Status](https://travis-ci.org/goburrow/modbus.svg?branch=master)](https://travis-ci.org/goburrow/modbus) [![GoDoc](https://godoc.org/github.com/goburrow/modbus?status.svg)](https://godoc.org/github.com/goburrow/modbus)
 =========
+**(Caution! This is speical version for AirSENCE V4.0)**
+
 Fault-tolerant, fail-fast implementation of Modbus protocol in Go.
+
 
 Supported functions
 -------------------
